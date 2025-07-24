@@ -1,4 +1,6 @@
+// components
 import { Button } from "@/components/ui/button";
+// next
 import Image from "next/image";
 
 export const Footer = () => {

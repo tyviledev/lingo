@@ -1,4 +1,7 @@
+// components
 import { Button } from "@/components/ui/button";
+
+// clerk
 import {
   ClerkLoaded,
   ClerkLoading,
@@ -9,6 +12,8 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import { Loader } from "lucide-react";
+
+// next
 import Image from "next/image";
 
 export const Header = () => {
