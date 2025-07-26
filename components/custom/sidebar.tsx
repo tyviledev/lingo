@@ -48,22 +48,22 @@ export const Sidebar = ({ className }: Props) => {
         <SidebarItem
           label="learn"
           href="/learn"
-          icon={<FaGlobeAsia className="w-8 h-8" />}
+          icon={<FaGlobeAsia className="w-12 h-12" />}
         />
         <SidebarItem
           label="leaderboard"
           href="/leaderboard"
-          icon={<MdLeaderboard className="w-8 h-8" />}
+          icon={<MdLeaderboard className="w-12 h-12" />}
         />
         <SidebarItem
           label="quests"
           href="/quests"
-          icon={<FaSketch className="w-8 h-8" />}
+          icon={<FaSketch className="w-12 h-12" />}
         />
         <SidebarItem
           label="shop"
           href="/shop"
-          icon={<FaShop className="w-8 h-8" />}
+          icon={<FaShop className="w-12 h-12" />}
         />
       </div>
       <div className="p-4">
