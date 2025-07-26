@@ -2,6 +2,7 @@
 import { Header } from "@/app/(main)/learn/components/header";
 import { FeedWrapper } from "@/components/custom/feed-wrapper";
 import { StickyWrapper } from "@/components/custom/sticky-wrapper";
+import { UserProgress } from "@/components/custom/user-progress";
 
 const LearnPage = () => {
   return (
@@ -10,7 +11,14 @@ const LearnPage = () => {
         <Header title="Thai" />
         {/* <div className="h-[20000px] bg-blue-500"></div> */}
       </FeedWrapper>
-      <StickyWrapper>Sticky Wrapper</StickyWrapper>
+      <StickyWrapper>
+        <UserProgress
+          hasActiveSubscription={false}
+          activeCourse={{ title: "Spanish", imageSrc: "/flag_thai.svg" }}
+          hearts={0}
+          points={0}
+        />
+      </StickyWrapper>
     </div>
   );
 };
