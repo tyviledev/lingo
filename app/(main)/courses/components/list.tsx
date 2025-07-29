@@ -5,10 +5,11 @@ import { Card } from "@/app/(main)/courses/components/card";
 
 // db
 import { courses } from "@/db/schema/courses";
+import { userProgress } from "@/db/schema/user-progress";
 
 type Props = {
   courses: (typeof courses.$inferSelect)[];
-  activeCourseId: number;
+  activeCourseId?: typeof userProgress.$inferSelect.activeCourseId;
 };
 
 export const List = ({ courses, activeCourseId }: Props) => {
