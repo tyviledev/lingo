@@ -1,5 +1,5 @@
 // schema
-import { courses } from "@/db/schema/courses";
+// import { courses } from "@/db/schema/courses";
 
 // utils
 import { cn } from "@/lib/utils";

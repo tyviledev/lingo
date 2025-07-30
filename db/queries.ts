@@ -10,6 +10,9 @@ import { auth } from "@clerk/nextjs/server";
 
 // schema
 import { userProgress } from "@/db/schema/user-progress";
+import { courses } from "@/db/schema/courses";
+
+// get user progress
 
 export const getUserProgress = cache(async () => {
   const { userId } = await auth();
@@ -29,8 +32,22 @@ export const getUserProgress = cache(async () => {
   return data;
 });
 
+// get all courses
+
 export const getCourses = cache(async () => {
   const data = await db.query.courses.findMany();
+
+  return data;
+});
+
+// get course by id
+
+export const getCourseById = cache(async (courseId: number) => {
+  const data = await db.query.courses.findFirst({
+    where: eq(courses.id, courseId),
+    // TODO
+    // Get all units and lessons from course
+  });
 
   return data;
 });
