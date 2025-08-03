@@ -22,15 +22,15 @@ const LearnPage = async () => {
   return (
     <div className="flex gap-12 px-6">
       <FeedWrapper>
-        <Header title="Thai" />
+        <Header title={userProgressData.activeCourse.title} />
         {/* <div className="h-[20000px] bg-blue-500"></div> */}
       </FeedWrapper>
       <StickyWrapper>
         <UserProgress
           hasActiveSubscription={false}
-          activeCourse={{ title: "Spanish", imageSrc: "/flag_thai.svg" }}
-          hearts={0}
-          points={0}
+          activeCourse={userProgressData.activeCourse}
+          hearts={userProgressData.hearts}
+          points={userProgressData.points}
         />
       </StickyWrapper>
     </div>

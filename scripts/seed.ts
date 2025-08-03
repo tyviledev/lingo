@@ -1,20 +1,41 @@
-import { drizzle } from "drizzle-orm/neon-http";
+// dotenv
 import "dotenv/config";
 
+// orm
+import { drizzle } from "drizzle-orm/neon-http";
+import { neon } from "@neondatabase/serverless";
+import { reset } from "drizzle-seed";
+
+// schema
 import * as coursesSchema from "@/db/schema/courses";
 import * as userProgressSchema from "@/db/schema/user-progress";
-import { neon } from "@neondatabase/serverless";
+import * as challengesSchema from "@/db/schema/challenges";
+import * as challengeOptionsSchema from "@/db/schema/challenge-options";
+import * as challengeProgressSchema from "@/db/schema/challenge-progress";
+import * as lessonsSchema from "@/db/schema/lessons";
+import * as unitsSchema from "@/db/schema/units";
+
+const schema = {
+  ...coursesSchema,
+  ...userProgressSchema,
+  ...challengesSchema,
+  ...challengeOptionsSchema,
+  ...challengeProgressSchema,
+  ...unitsSchema,
+  ...lessonsSchema,
+};
 
 const sql = neon(process.env.DATABASE_URL!);
 const db = drizzle({
   client: sql,
-  schema: { ...coursesSchema, ...userProgressSchema },
+  schema,
 });
 
 async function main() {
   try {
     await db.delete(coursesSchema.courses);
     await db.delete(userProgressSchema.userProgress);
+    // await reset(db, schema);
 
     await db.insert(coursesSchema.courses).values([
       {
