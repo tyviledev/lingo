@@ -33,9 +33,14 @@ const db = drizzle({
 
 async function main() {
   try {
-    await db.delete(coursesSchema.courses);
-    await db.delete(userProgressSchema.userProgress);
-    // await reset(db, schema);
+    // await db.delete(coursesSchema.courses);
+    // await db.delete(userProgressSchema.userProgress);
+    // await db.delete(unitsSchema.units);
+    // await db.delete(lessonsSchema.lessons);
+    // await db.delete(challengesSchema.challenges);
+    // await db.delete(challengeOptionsSchema.challengeOptions);
+    // await db.delete(challengeProgressSchema.challengeProgress);
+    await reset(db, schema);
 
     await db.insert(coursesSchema.courses).values([
       {
@@ -62,6 +67,61 @@ async function main() {
         id: 5,
         title: "Phillipino",
         imageSrc: "/flag_phillipines.svg",
+      },
+    ]);
+
+    await db.insert(unitsSchema.units).values([
+      {
+        id: 1,
+        courseId: 1,
+        title: "Unit 1",
+        description: "Learn the basics of Thai",
+        order: 1,
+      },
+    ]);
+
+    await db.insert(lessonsSchema.lessons).values([
+      {
+        id: 1,
+        unitId: 1,
+        title: "Greetings",
+        description: "Basic greetings in Thai",
+        order: 1,
+      },
+    ]);
+
+    await db.insert(challengesSchema.challenges).values({
+      id: 1,
+      lessonId: 1,
+      type: "SELECT",
+      order: 1,
+      question: "Which one of these is the particle men say after greetings",
+    });
+
+    await db.insert(challengeOptionsSchema.challengeOptions).values([
+      {
+        id: 1,
+        challengeId: 1,
+        imageSrc: "/",
+        correct: true,
+        text: "khrap",
+        audioSrc: "/",
+      },
+      {
+        id: 2,
+        challengeId: 1,
+        imageSrc: "/",
+        correct: false,
+        text: "ka",
+        audioSrc: "/",
+      },
+      {
+        id: 3,
+        challengeId: 1,
+        imageSrc: "/",
+        correct: false,
+        text: "na",
+        audioSrc: "/",
       },
     ]);
   } catch (error) {
